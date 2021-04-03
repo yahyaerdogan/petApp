@@ -1,92 +1,47 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, TextInput, Touchable, TouchableOpacity, View } from 'react-native';
+import 'react-native-gesture-handler';
 
-export default class App extends React.Component {
-  state = {
-    email: "",
-    password: ""
-  }
-  render() {
-    return (
-      <View style={styles.container}>
-      <Text style={styles.logo}>PetCare</Text>
-      <View style={styles.inputView} >
-        <TextInput  
-          style={styles.inputText}
-          placeholder="username" 
-          placeholderTextColor="#003f5c"
-          onChangeText={text => this.setState({email:text})}/>
-      </View>
-      <View style={styles.inputView} >
-        <TextInput  
-          secureTextEntry
-          style={styles.inputText}
-          placeholder="password" 
-          placeholderTextColor="#003f5c"
-          onChangeText={text => this.setState({password:text})}/>
-      </View>
-      <TouchableOpacity>
-        <Text style={styles.forgot}>Forgot Password?</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.loginBtn}>
-        <Text style={styles.loginText}>LOGIN</Text>
-      </TouchableOpacity>
-      <TouchableOpacity>
-        <Text style={styles.loginText}>Signup</Text>
-      </TouchableOpacity>
+import * as React from 'react';
+import { Button, View, Text } from 'react-native';
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 
-    </View>
+import Login from './pages/Login';
+import MenuPage from './pages/MenuPage';
+
+
+const Stack = createStackNavigator();
+
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Login">
+        <Stack.Screen
+          name="Login"
+          component={Login}
+          options={{
+            title: 'Login', //Set Header Title
+            headerStyle: {
+              backgroundColor: '#533549', //Set Header color
+            }
+          }}
+          
+        />
+        <Stack.Screen
+          name="Menu"
+          component={MenuPage}
+          options={{
+            title: 'Menu', //Set Header Title
+            headerStyle: {
+              backgroundColor: '#533549', //Set Header color
+            }
+          }}
+        />
+        
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-  }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#533549",
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  logo:{
-    fontWeight:"bold",
-    fontSize:50,
-    color:"#f6b042",
-    marginBottom:40,textShadowColor: 'rgba(0, 0, 0, 0.75)',
-    textShadowOffset: {width: -1, height: 1},
-    textShadowRadius: 5
-    
-  },
-  inputView:{
-    width:"80%",
-    backgroundColor:"#f6b042",
-    borderRadius:25,
-    height:50,
-    marginBottom:20,
-    justifyContent:"center",
-    padding:20
-  },
-  inputText:{
-    height:50,
-    color:"black"
-  },
-  forgot:{
-    color:"black",
-    fontSize:11
-  },
-  loginBtn:{
-    width:"80%",
-    backgroundColor:"#f6b04e",
-    borderRadius:25,
-    height:50,
-    alignItems:"center",
-    justifyContent:"center",
-    marginTop:40,
-    marginBottom:10
-  },
-  loginText:{
-    color:"black",
-    
-  }
-});
+export default App;

@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "vetApp",
-    "slug": "vetApp",
+    "name": "nav-tutorial-2",
+    "slug": "nav-tutorial-2",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
