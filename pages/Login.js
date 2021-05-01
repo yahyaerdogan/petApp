@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { Button, View, Text,TextInput, Touchable, TouchableOpacity, SafeAreaView, StyleSheet } from 'react-native';
+import { useState } from "react";
+
 
 const Login = ({ navigation }) => {
   return (
@@ -26,7 +28,7 @@ const Login = ({ navigation }) => {
       <Text style={styles.forgot}>Forgot Password?</Text>
     </TouchableOpacity>
     <TouchableOpacity  style={styles.loginBtn}
-    onPress={() => navigation.navigate('Menu')}>
+    onPress={() => navigation.navigate('MenuPage')}>
       <Text style={styles.loginText} >LOGIN</Text>
     </TouchableOpacity>
     <TouchableOpacity  >
