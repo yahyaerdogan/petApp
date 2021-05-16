@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
+import React, { Component } from 'react'
 
-import * as React from 'react';
 import { Button, View, Text } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -9,14 +9,19 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Login from './pages/Login';
 import MenuPage from './pages/MenuPage';
-
+import ProfilePet from './pages/ProfilePet';
+import AddPet from './pages/AddPet';
 
 const Stack = createStackNavigator();
 
-function App() {
+export default class App extends Component {
+
+ 
+
+  render(){
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="MenuPage">
+      <Stack.Navigator initialRouteName="AddPet">
         <Stack.Screen
           name="Login"
           component={Login}
@@ -38,10 +43,31 @@ function App() {
             }
           }}
         />
+        <Stack.Screen
+          name="ProfilePet"
+          component={ProfilePet}
+          options={{
+            title: 'ProfilePet', //Set Header Title
+            headerStyle: {
+              backgroundColor: '#533549', //Set Header color
+            }
+          }}
+        />
+         <Stack.Screen
+          name="AddPet"
+          component={AddPet}
+          options={{
+            title: 'AddPet', //Set Header Title
+            headerStyle: {
+              backgroundColor: '#533549', //Set Header color
+            }
+          }}
+        />
         
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
+}
 
-export default App;
+// export default App;
