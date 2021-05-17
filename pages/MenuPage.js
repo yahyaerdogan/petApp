@@ -6,39 +6,23 @@ import Menu, { MenuItem, MenuDivider } from 'react-native-material-menu';
 import { Icon } from 'react-native-elements'
 import { Image } from 'react-native-elements';
 import { ActivityIndicator } from 'react-native';
+import { DATA } from './PetData';
+import FontAvasome5 from "react-native-vector-icons/FontAwesome5";
 
-const DATA = [
-  {
-    id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-    title: "First Item",
-  },
-  {
-    id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
-    title: "Second Item",
-  },
-  {
-    id: "58694a0f-3da1-471f-bd96-145571e29d72",
-    title: "Third Item",
-  },
-  {
-    id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-    title: "First Item",
-  },
-  {
-    id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
-    title: "Second Item",
-  },
-  {
-    id: "58694a0f-3da1-471f-bd96-145571e29d72",
-    title: "Third Item",
-  }
-];
+
+const iconCalendar = <FontAvasome5 name={'calendar-alt'} size={44}   />;
+const iconAddNew = <FontAvasome5 name={'paw'} size={44}  />;
+const iconBlog = <FontAvasome5 name={'newspaper'} size={44} />;
+const iconHelp = <FontAvasome5 name={'question'} size={44} />;
+
 
 const Item = ({ item, onPress, backgroundColor, textColor }) => (
   <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
     <Text style={[styles.title, textColor]}>{item.title}</Text>
   </TouchableOpacity>
 );
+
+
 
 
 
@@ -52,7 +36,8 @@ const MenuPage = ({ navigation }) => {
     return (
       <Item
         item={item}
-        onPress={() => setSelectedId(item.id)}
+        // onPress={() => setSelectedId(item.id)}
+        onPress={() => navigation.navigate('ProfilePet')}
         backgroundColor={{ backgroundColor }}
         textColor={{ color }}
       />
@@ -74,33 +59,30 @@ const MenuPage = ({ navigation }) => {
       <View style={styles.menuItem}>
 
         <TouchableOpacity style={styles.calendar}>
-          <View><Text>"logo"Calendar</Text>
-            {/* <Icon
-              raised
-              name='calendar'
+          {iconCalendar}
 
-              type='font-awesome'
-              color='#f50'
-              onPress={() => console.log('hello')} /> */}
+          <View><Text style={styles.menuText}>TAKVİM</Text>
+
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.addNewPet}>
-          <View><Text>"logo"Add New</Text>
-            {/* <Image
-              source={{ uri: "https://picsum.photos/200" }}
-              style={styles.MenuItemLogo}
-              PlaceholderContent={<ActivityIndicator />}
-            /> */}
+        <TouchableOpacity
+        onPress={() => navigation.navigate('AddPet')}
+         style={styles.addNewPet}>
+          {iconAddNew}
+          <View><Text style={styles.menuText}>YENİ EKLE</Text>
+
           </View>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.blog}>
-          <View><Text>"logo"Blog</Text></View>
+          {iconBlog}
+          <View><Text style={styles.menuText}>BLOG</Text></View>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.help}>
-          <View><Text>"logo"Help</Text></View>
+          {iconHelp}
+          <View><Text style={styles.menuText}>YARDIM</Text></View>
         </TouchableOpacity>
 
 
@@ -113,12 +95,12 @@ const MenuPage = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "red",
+    backgroundColor: "#533549",
   },
   petProfiles: {
     width: "100%",
     height: "25%",
-    backgroundColor: "yellow",
+    backgroundColor: "#533549",
     marginTop: StatusBar.currentHeight || 0,
 
 
@@ -141,7 +123,7 @@ const styles = StyleSheet.create({
   },
 
   calendar: {
-    backgroundColor: "green",
+    backgroundColor: "#f6b04e",
     height: "50%",
     width: '50%',
     alignItems: 'center',
@@ -151,7 +133,7 @@ const styles = StyleSheet.create({
 
   },
   addNewPet: {
-    backgroundColor: "orange",
+    backgroundColor: "#f6b04e",
     height: "50%",
     width: '50%',
     alignItems: 'center',
@@ -159,7 +141,7 @@ const styles = StyleSheet.create({
     borderRadius: Math.round(Dimensions.get('window').width + Dimensions.get('window').height) / 2
   },
   blog: {
-    backgroundColor: "salmon",
+    backgroundColor: "#f6b04e",
     height: "50%",
     width: '50%',
     alignItems: 'center',
@@ -167,7 +149,7 @@ const styles = StyleSheet.create({
     borderRadius: Math.round(Dimensions.get('window').width + Dimensions.get('window').height) / 2
   },
   help: {
-    backgroundColor: "blue",
+    backgroundColor: "#f6b04e",
     height: "50%",
     width: '50%',
     alignItems: 'center',
@@ -181,7 +163,17 @@ const styles = StyleSheet.create({
     padding: 20,
     marginVertical: 8,
     marginHorizontal: 25,
-    borderRadius: Math.round(Dimensions.get('window').width + Dimensions.get('window').height) / 2
+    borderRadius: Math.round(Dimensions.get('window').width + Dimensions.get('window').height) / 2,
+
+  },
+  icon: {
+    width: "40%",
+    height: "40%",
+  },
+  menuText: {
+    padding: 10,
+    fontSize: 20,
+    fontWeight: "bold"
   }
 });
 

@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "nav-tutorial-2",
-    "slug": "nav-tutorial-2",
+    "name": "petApp",
+    "slug": "petApp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

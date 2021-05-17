@@ -14,6 +14,13 @@ const iconOldEvents = <FontAvasome5 name={'calendar-check'} size={44} />;
 
 
 export default class ProfilePet extends Component {
+
+  state = {
+    name: "Boby",
+    kind: "Tavşan",
+    gender: "Erkek",
+    dateOfBirth: "15/06/2020"
+ }
   render() {
     return (
       <SafeAreaView style={styles.container}>
@@ -26,10 +33,10 @@ export default class ProfilePet extends Component {
             />
           </View>
           <View style={styles.basicInfo}>
-            <Text style={styles.basicInfoText}>İsim: </Text>
-            <Text style={styles.basicInfoText}>Tür: </Text>
-            <Text style={styles.basicInfoText}>Cinsiyet:</Text>
-            <Text style={styles.basicInfoText}>Doğum Tarihi: </Text>
+            <Text style={styles.basicInfoText}>İsim:  <Text style={styles.stateInfo}>{this.state.name}</Text></Text>
+            <Text style={styles.basicInfoText}>Tür:  <Text style={styles.stateInfo}>{this.state.kind}</Text></Text>
+            <Text style={styles.basicInfoText}>Cinsiyet:  <Text style={styles.stateInfo}>{this.state.gender}</Text></Text>
+            <Text style={styles.basicInfoText}>Doğum Tarihi:  <Text style={styles.stateInfo}>{this.state.dateOfBirth}</Text></Text>
           </View>
         </View>
         <View style={styles.areaTwo}>
@@ -76,7 +83,7 @@ const styles = StyleSheet.create({
   areaOne: {
 
     flex: 4,
-    backgroundColor: "gray",
+    backgroundColor: "#533549",
     flexDirection: "row",
 
 
@@ -90,21 +97,20 @@ const styles = StyleSheet.create({
   },
   profilePhoto: {
     flex: 2,
-    backgroundColor: "salmon",
+    backgroundColor: "#f6b04e",
     alignItems: "center",
-    justifyContent:"center"
+    justifyContent: "center"
   },
   basicInfo: {
     flex: 3,
-    backgroundColor: "orange",
+    backgroundColor: "#f6b04e",
     justifyContent: "center",
-
 
 
   },
   basicInfoText: {
     fontSize: 18,
-    marginTop: 8,
+    marginTop: 11,
     marginLeft: 18
 
   },
@@ -113,6 +119,12 @@ const styles = StyleSheet.create({
 
     width: 111,
     height: 111,
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    shadowOffset: {
+      height: 3,
+      width: 1
+    }
 
   },
 
@@ -155,4 +167,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold"
   },
+  stateInfo:{
+    fontWeight: "bold"
+  }
 });
