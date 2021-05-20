@@ -21,7 +21,7 @@ export default class App extends Component {
   render(){
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
+      <Stack.Navigator initialRouteName="AddPet">
         <Stack.Screen
           name="Login"
           component={Login}
