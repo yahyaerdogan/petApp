@@ -1,13 +1,18 @@
-import React, { Component } from 'react'
-import { Text, View, StyleSheet, Image, TextInput, SafeAreaView } from 'react-native'
+import React, { Component, useState } from 'react'
+import { Text, View, StyleSheet, Button, Image, TextInput, SafeAreaView } from 'react-native'
 import { Input } from 'react-native-elements';
 import { Picker } from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 
 import FontAvasome5 from "react-native-vector-icons/FontAwesome5";
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const uploadPhoto = <FontAvasome5 name={'plus'} size={44} />;
+
+
+
+
 
 
 export default class AddPet extends Component {
@@ -16,11 +21,12 @@ export default class AddPet extends Component {
     name: "",
     genus: "",
     gender: "",
-    species:"",
-    date:{},
-    mode:{},
-    show:{},
-    
+    species: "",
+    date: new Date(),
+    show: false,
+    details: "",
+
+
   }
 
   _onChangeName = (value) => {//parameter = text --> instead of e or event
@@ -35,12 +41,26 @@ export default class AddPet extends Component {
   _onChangeGender = (value) => {
     this.setState({ gender: value });
   }
+  _onChangeDetails = (value) => {
+    this.setState({ details: value });
+  }
+
+  showDate = () => {
+    this.setState({ show: true });
+  }
+
+  _getDate = (event) => {
+    this.setState({ date: event.toDateString(), show: false });
+
+  }
+
+
 
 
   render() {
 
     const {
-      name, genus, gender, species, date, mode, show
+      name, genus, gender, species, show, date, details
     } = this.state;
 
 
@@ -51,7 +71,7 @@ export default class AddPet extends Component {
 
           <View style={styles.addPhoto}>
             {uploadPhoto}
-            <Text>Fotoğraf Ekle{console.log("date: " , this.state.date)}</Text>
+            <Text>Fotoğraf Ekle</Text>
           </View>
 
 
@@ -66,7 +86,7 @@ export default class AddPet extends Component {
 
             <Picker style={styles.textInput}
               selectedValue={genus}
-              
+
               onValueChange={this._onChangeGenus}>
               <Picker.Item label="Kedi" value="kedi" />
               <Picker.Item label="Köpek" value="kopek" />
@@ -76,7 +96,7 @@ export default class AddPet extends Component {
               <Picker.Item label="Tavşan" value="tavsan" />
               <Picker.Item label="Kaplumbağa" value="Kaplumbaga" />
 
-              
+
             </Picker>
 
             <Picker style={styles.textInput}
@@ -98,19 +118,25 @@ export default class AddPet extends Component {
 
 
         <View style={styles.bottomArea}>
+          <View><Text style={{ margin: 12, }}>Doğum Tarihi:   {date.toDateString()}</Text></View>
+          <View style={styles.dateButton}>
+            <TouchableOpacity onPress={this.showDate}><Text>Doğum Tarihi Ekle!</Text></TouchableOpacity>
 
-        
-      {/* {show && (
-        <DateTimePicker
-          testID="dateTimePicker"
-          value={date}
-          mode={mode}
-          is24Hour={true}
-          display="default"
-          //onChange={onChange}
-        />
-      )} */}
-    
+          </View>
+
+          {show && (
+            <DateTimePicker
+
+              value={new Date()}
+              onChange={this._getDate}
+            />
+          )}
+
+          <TextInput style={styles.detailsInput}
+            placeholder="Ayrıntılar:  "
+            onChangeText={this._onChangeDetails}
+          />
+
         </View>
 
 
@@ -133,7 +159,7 @@ const styles = StyleSheet.create({
   bottomArea: {
     flex: 1,
     backgroundColor: "salmon",
-    justifyContent: "center"
+    // justifyContent: "center"
   },
   addPhoto: {
     backgroundColor: "blue",
@@ -154,7 +180,24 @@ const styles = StyleSheet.create({
     width: 200,
     borderWidth: 2,
     borderRadius: 12,
-    backgroundColor:"rgb(246, 176, 66)"
+    backgroundColor: "rgb(246, 176, 66)"
   },
+  dateButton: {
+    height: 40,
+    margin: 12,
+    alignItems: "center",
+    justifyContent: "center",
+    borderWidth: 2,
+    borderRadius: 12,
+    backgroundColor: "rgb(246, 176, 66)"
+  },
+  detailsInput:{
+    height: 50,
+    margin: 12,
+    
+    borderWidth: 2,
+    borderRadius: 12,
+    backgroundColor: "rgb(246, 176, 66)"
+  }
 
 })
