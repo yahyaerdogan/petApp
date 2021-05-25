@@ -148,7 +148,7 @@ export default class AddPet extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#533549",
+    backgroundColor: "rgb(83, 53, 73);",
   },
   topArea: {
     flex: 1,
@@ -158,18 +158,18 @@ const styles = StyleSheet.create({
   },
   bottomArea: {
     flex: 1,
-    backgroundColor: "salmon",
+    // backgroundColor: "salmon",
     // justifyContent: "center"
   },
   addPhoto: {
-    backgroundColor: "blue",
+    // backgroundColor: "blue",
     flex: 2,
     justifyContent: 'center',
     alignItems: "center"
 
   },
   basicInfo: {
-    backgroundColor: "red",
+    // backgroundColor: "red",
     flex: 3,
     justifyContent: 'center',
 
