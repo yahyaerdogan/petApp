@@ -20,7 +20,7 @@ export default class ProfilePet extends Component {
     kind: "Tavşan",
     gender: "Erkek",
     dateOfBirth: "15/06/2020"
- }
+  }
   render() {
     return (
       <SafeAreaView style={styles.container}>
@@ -41,7 +41,9 @@ export default class ProfilePet extends Component {
         </View>
         <View style={styles.areaTwo}>
 
-          <TouchableOpacity style={styles.calendar}>
+          <TouchableOpacity
+           onPress={() => this.props.navigation.navigate('AddEvent')}
+            style={styles.calendar}>
             {iconAddEvent}
             <View><Text style={styles.menuText}>ETKİNLİK EKLE</Text>
 
@@ -167,7 +169,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold"
   },
-  stateInfo:{
+  stateInfo: {
     fontWeight: "bold"
   }
 });

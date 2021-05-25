@@ -80,7 +80,9 @@ const MenuPage = ({ navigation }) => {
           <View><Text style={styles.menuText}>BLOG</Text></View>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.help}>
+        <TouchableOpacity 
+        onPress={() => navigation.navigate('Help')}
+        style={styles.help}>
           {iconHelp}
           <View><Text style={styles.menuText}>YARDIM</Text></View>
         </TouchableOpacity>

@@ -11,6 +11,8 @@ import Login from './pages/Login';
 import MenuPage from './pages/MenuPage';
 import ProfilePet from './pages/ProfilePet';
 import AddPet from './pages/AddPet';
+import Help from './pages/Help';
+import AddEvent from './pages/AddEvent';
 
 const Stack = createStackNavigator();
 
@@ -21,7 +23,7 @@ export default class App extends Component {
   render(){
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="AddPet">
+      <Stack.Navigator initialRouteName="App.js">
         <Stack.Screen
           name="Login"
           component={Login}
@@ -63,6 +65,26 @@ export default class App extends Component {
             }
           }}
         />
+        <Stack.Screen
+          name="Help"
+          component={Help}
+          options={{
+            title: 'Help', //Set Header Title
+            headerStyle: {
+              backgroundColor: '#533549', //Set Header color
+            }
+          }}
+        />
+         <Stack.Screen
+          name="AddEvent"
+          component={AddEvent}
+          options={{
+            title: 'AddEvent', //Set Header Title
+            headerStyle: {
+              backgroundColor: '#533549', //Set Header color
+            }
+          }}
+        />
         
       </Stack.Navigator>
     </NavigationContainer>
@@ -70,4 +92,4 @@ export default class App extends Component {
 }
 }
 
-// export default App;
+
