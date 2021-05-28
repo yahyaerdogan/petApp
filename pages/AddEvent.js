@@ -1,25 +1,35 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, TextInput } from 'react-native'
+import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
 import { Input } from 'react-native-elements';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 export default class AddEvent extends Component {
   state = {
     eventName: "",
     eventDescription: "",
     eventDate: new Date(),
-    eventTime: new Date()
+    eventTime: new Date(),
+    show: false
   }
 
   _onChangeEventName = (value) => {
     this.setState({ eventName: value })
   }
-  _onChangeEventDescription= (value)=>{
-    this.setState({eventDescription:value})
+  _onChangeEventDescription = (value) => {
+    this.setState({ eventDescription: value })
+  }
+  _onChangeDate = (value) => {
+
+    this.setState({ date: value.toDateString(), show: false });
+  }
+  showDate = () => {
+    this.setState({ show: true });
   }
 
 
 
   render() {
+
 
 
 
@@ -35,6 +45,22 @@ export default class AddEvent extends Component {
           placeholder="Etkinlik ayrıntılarını giriniz  "
           onChangeText={this._onChangeEventDescription}
         />
+        <Text style={styles.headerText}>Etkinlik tarihi: </Text>
+
+        {this.state.show && (
+          <DateTimePicker
+
+            value={new Date()}
+            onChange={this._onChangeDate}
+          />
+        )}
+        <TouchableOpacity onPress={this.showDate} style={styles.eventName} >
+          <Text>Tarih Seç</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.createEvent} >
+          <Text>Etkinlik oluştur</Text>
+        </TouchableOpacity>
 
       </View>
     )
@@ -53,10 +79,20 @@ const styles = StyleSheet.create({
     margin: 12,
     borderRadius: 12,
     backgroundColor: "rgb(246, 176, 66)",
-    textAlign: "center"
+    textAlign: "center",
+    justifyContent: "center"
+
   },
   headerText: {
-    marginTop:12,
+    marginTop: 12,
     textAlign: "center",
+  },
+  createEvent: {
+    backgroundColor: "rgb(47, 79, 79)",
+    height: 50,
+    margin: 12,
+    borderRadius: 12,
+    textAlign: "center",
+    justifyContent: "center"
   }
 })
