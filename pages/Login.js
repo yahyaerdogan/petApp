@@ -8,6 +8,12 @@ import { Button, View, Text, TextInput, Touchable, TouchableOpacity, SafeAreaVie
       email:"",
       password:""
     }
+    
+    submit(){
+      this.props.navigation.reset({
+        routes: [{ name: "MenuPage" }]
+      })
+    }
 
     render() {
   return (
@@ -35,7 +41,7 @@ import { Button, View, Text, TextInput, Touchable, TouchableOpacity, SafeAreaVie
         <Text style={styles.forgot}>Forgot Password?</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.loginBtn}
-        onPress={() => this.props.navigation.navigate('MenuPage')}>
+        onPress={() => this.submit()}>
         <Text style={styles.loginText} >LOGIN</Text>
       </TouchableOpacity>
       <TouchableOpacity  >
