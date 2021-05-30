@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, View, Text, TextInput, Touchable, TouchableOpacity, SafeAreaView, StyleSheet } from 'react-native';
+import { Button, KeyboardAvoidingView, View, Text, TextInput, Touchable, TouchableOpacity, SafeAreaView, StyleSheet } from 'react-native';
 
 
 
@@ -12,7 +12,7 @@ import { Button, View, Text, TextInput, Touchable, TouchableOpacity, SafeAreaVie
     render() {
   return (
 
-    <View style={styles.container}>
+    <KeyboardAvoidingView behavior="padding" style={styles.container}>
       <Text style={styles.logo}>
         PetCare
     </Text>
@@ -43,7 +43,7 @@ import { Button, View, Text, TextInput, Touchable, TouchableOpacity, SafeAreaVie
       </TouchableOpacity>
 
 
-    </View>
+    </KeyboardAvoidingView>
   );
     }
 }
